@@ -1,6 +1,6 @@
 #include "shared_ptr.h"
 
-/*
+
 template<class T>
 void shared_ptr<T>::constructionFunction (const shared_ptr<T>& ptr)
 {
@@ -11,8 +11,8 @@ void shared_ptr<T>::constructionFunction (const shared_ptr<T>& ptr)
     {   
         (*(this->refs))++;
     }
-}*/
-/*
+}
+
 template<class T>
 void shared_ptr<T>::cleanFunction ()
 {
@@ -30,7 +30,7 @@ void shared_ptr<T>::cleanFunction ()
         (*(this->refs))--;
     }
 }
-*/
+
 template<class T>
 void shared_ptr<T>::reset(T * external_data)
 {
@@ -39,3 +39,5 @@ void shared_ptr<T>::reset(T * external_data)
     this->refs = new size_t(1);
 }
 
+template class shared_ptr<int>;
+template class shared_ptr<std::string>;

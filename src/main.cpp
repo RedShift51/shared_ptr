@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include "shared_ptr.h"
 
 int main()
@@ -8,11 +7,13 @@ int main()
     
     for (int i = 0; i < 1e12; i++)
     {
-        //std::string* s = new std::string("SHARED PTR");
-        shared_ptr<std::string> shared(new std::string("SHARED PTR"));
+        std::string* s = new std::string("SHARED PTR");
+        shared_ptr<std::string> shared(s);
         shared_ptr<std::string> shared1 = shared;
         shared_ptr<std::string> shared2(shared);
-        //std::cout << i << std::endl;
+
+        std::string* s1 = new std::string("SHARED PRT");
+        shared2.reset(s1);
     }
 
     return 0;

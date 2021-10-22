@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <cstddef>
 
 template <class T>
@@ -9,41 +10,15 @@ private:
     size_t * refs = nullptr;
 
 public:
-    void constructionFunction (const shared_ptr& ptr)
-    {
-        this->data = ptr.data;
-        this->refs = ptr.refs;
-
-        if (ptr.data != nullptr)
-        {
-            (*(this->refs))++;
-        }
-    }
-
-    void cleanFunction ()
-    {
-        if (*(this->refs) == 1)
-        {
-            delete this->refs;
-            delete this->data;
-        }
-        else if (*(this->refs) == 0)
-        {
-            delete this->refs;
-        }
-        else
-        {
-            (*(this->refs))--;
-        }
-    }
-
+    void constructionFunction (const shared_ptr& ptr);
+    void cleanFunction ();
 
     // default constructor
     shared_ptr () : data(nullptr), refs(new size_t(0)) { }
 
     // constructor from pointer
     shared_ptr (T * external_data) : data(external_data), refs(new size_t(1)) { }
-    shared_ptr (const T * external_data) : data(external_data), refs(new size_t(1)) { }
+    //shared_ptr (const T * external_data) : data(external_data), refs(new size_t(1)) { }
 
     // copy constructor
     shared_ptr (const shared_ptr& ptr)
@@ -58,9 +33,9 @@ public:
         this->constructionFunction(ptr); 
     }
 
-    T& operator* () const 
+    T* operator* () const 
     {
-        return this->ptr;
+        return this->data;
     }
 
     // destructor
@@ -71,3 +46,4 @@ public:
 
     void reset(T * external_data);
 };
+
