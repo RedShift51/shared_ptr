@@ -9,9 +9,10 @@ private:
     T * data = nullptr;
     size_t * refs = nullptr;
 
-public:
     void constructionFunction (const shared_ptr& ptr);
     void cleanFunction ();
+
+public:
 
     // default constructor
     shared_ptr () : data(nullptr), refs(new size_t(0)) { }
