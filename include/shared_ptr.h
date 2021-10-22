@@ -18,7 +18,6 @@ public:
 
     // constructor from pointer
     shared_ptr (T * external_data) : data(external_data), refs(new size_t(1)) { }
-    //shared_ptr (const T * external_data) : data(external_data), refs(new size_t(1)) { }
 
     // copy constructor
     shared_ptr (const shared_ptr& ptr)
